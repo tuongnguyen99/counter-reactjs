@@ -7,12 +7,12 @@ class Counter extends Component {
         return value !== 0 ? value : 'Zero';
     }
     render() {
-        const value = this.props.counter.value;
+        const {counter, onIncrement, onDelete} = this.props;
         return (
             <div className="Counter m-2">
-                <span className={classNames('badge', 'm-2', { 'badge-success': value !== 0, 'badge-danger': value === 0 })}>{this.formatCount()}</span>
-                <button className="btn btn-secondary" onClick={() => this.props.onIncrement(this.props.counter)}>Increment</button>
-                <div className="btn btn-danger m-2" onClick={() => this.props.onDelete(this.props.counter.id)}>Delete</div>
+                <span className={classNames('badge', 'm-2', { 'badge-success': counter.value !== 0, 'badge-danger': counter.value === 0 })}>{this.formatCount()}</span>
+                <button className="btn btn-secondary" onClick={() => onIncrement(counter)}>Increment</button>
+                <div className="btn btn-danger m-2" onClick={() => onDelete(counter.id)}>Delete</div>
             </div>
         );
     }
